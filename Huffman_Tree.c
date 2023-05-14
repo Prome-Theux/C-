@@ -19,9 +19,19 @@ int sort (char *arg)
     }
     printf("%s",arg); 
 }
-int statistics (int *arg)
+int statistics (char *arg,int *sum)//统计字母出现次数
 {
+    int len;
+    len=strlen(arg);
+    for(int i=0;i<len;i++)
+    {
+        sum[arg[i]-97]+=1;
+    }
     
+    for (int i=0;i<26;i++)
+    {
+        printf("%d",sum[i]);
+    }
 }
 
 
@@ -29,15 +39,18 @@ int statistics (int *arg)
 
 int main ()
 {
-    char str[100];
-    char zero[100]="0";
-    int sum[100];
+    int sum[26]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//统计字符出现的次数a-z
+    char str[100];//输入的字符串
+    char zero[100]="0";//用于比较
     scanf("%s",str);
+    sort(str);
+    statistics(str,sum);
+    //printf("%s",sum[0]);
+
     //现在目标 
     //将获取到输入的字符串按ascll码排序，将相同的字符排在一起
     //创建一个变量，遍历字符串，遇到同样的字符变量+1，不同的字符变量归零。这样即可找到出现频率最高的字符。
-    sort(str);
-
+    //sort(str);
 
     
 
